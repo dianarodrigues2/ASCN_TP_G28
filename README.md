@@ -2,6 +2,12 @@
 
 Resolução do trabalho prático.
 
+**Grupo 28:**
+* Diana Rodrigues - dianarodrigues2
+* Henrique Parola - henriqueparola
+* José Fernandes  - jpdiasfernandes
+* Mariana Amorim  - MarianaCAA
+
 **Semestre:** 1º semestre - 4º ano
 
 **Ano Letivo:** 2022/23
