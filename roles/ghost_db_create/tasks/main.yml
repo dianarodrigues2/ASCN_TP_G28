@@ -1,0 +1,15 @@
+---
+- name: Create deployment MySQL
+  kubernetes.core.k8s:
+    state: present
+    src: containers/mysql/mysql_deployment.yml
+
+- name: PVC MySQL
+  kubernetes.core.k8s:
+    state: present
+    src: containers/mysql/mysql_pvc.yml
+
+- name: Service MySQL
+  kubernetes.core.k8s:
+    state: present
+    src: containers/mysql/mysql_service.yml

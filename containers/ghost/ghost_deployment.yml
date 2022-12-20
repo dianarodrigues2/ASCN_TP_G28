@@ -1,0 +1,34 @@
+---
+# Deployment for deploying Ghost
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost
+  labels:
+    app: ghost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost
+  template:
+    metadata:
+      labels:
+        app: ghost
+    spec:
+      containers:
+      - name: ghost
+        image: ghost:5.14.1
+        env:
+        - name: DB_HOST
+          value: mysql_service
+        - name: DB_DATABASE
+          value: ghost
+        - name: DB_USERNAME
+          value: ghostuser
+        - name: DB_PASSWORD
+          value: "Gh0$t" # Use secret object in real usage
+        - name: MIGRATE
+          value: "true"
+        ports:
+        - containerPort: 8000
