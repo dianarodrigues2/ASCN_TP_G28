@@ -16,34 +16,3 @@
   kubernetes.core.k8s:
     state: present
     src: containers/ghost/ghost_service.yml
-
-#- name: Get MySQL Pod Name
-#  kubernetes.core.k8s_info:
-#    kind: Pod
-#    label_selectors:
-#      - app = mysql
-#  register: pod_list
-#
-#- name: Update Admin in MySQL
-#  shell: kubectl exec -it {{ pod_list.resources[0].metadata.name }} -- bash -c "mysql -u "ghostuser" -p "Gh0$t" ghost -e \"update users set name='ascn', password='\$2b\$10\$cn38yYUct1rmF8Ylcbguluh6I7h3Bil5reA/xup1y1rnSBPkKVBOS', email='ascn@example.com', status='active' where id=1;\""
-#
-#- name: Wait for Ghost Service External IP
-#  shell: "kubectl get services ghost-service -o wide | awk '{ print $4}' |  grep -v EXT"
-#  register: k_ext_ip
-#  until: k_ext_ip.stdout[0].isdigit() != False
-#  retries: 6
-#  delay: 10
-#
-#- name: Get Ghost IP
-#  kubernetes.core.k8s_info:
-#    kind: Service
-#    label_selectors:
-#      - app = ghost
-#  register: ghost_service
-#
-#- name: Get Ghost IP 2
-#  set_fact:
-#    ghost_ip: "{{ ghost_service.resources[0].status.loadBalancer.ingress[0].ip }}"
-#
-#- name: Update ghost_ip
-#  template: src=gcp_template dest=inventory/gcp.yml
