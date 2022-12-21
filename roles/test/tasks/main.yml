@@ -1,0 +1,16 @@
+---
+- name: kubectl get nodes
+  shell: kubectl get nodes
+  register: kubectl_get_nodes
+
+- name: print kubectl_get_nodes
+  debug:
+    msg: "{{ kubectl_get_nodes.stdout_lines }}"
+
+- name: kubectl get all
+  shell: kubectl get all
+  register: kubectl_get_all
+
+- name: print kubectl_get_all
+  debug:
+    msg: "{{ kubectl_get_all.stdout_lines }}"
