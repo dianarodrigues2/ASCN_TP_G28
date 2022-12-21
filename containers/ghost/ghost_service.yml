@@ -3,17 +3,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ghost_service
+  name: ghost-service
+  namespace: ascn-cluster
   labels:
     app: ghost
 spec:
-  type: NodePort # Makes the service accessible on a static port on each Node in the cluster.
+  type: LoadBalancer
   selector:
     app: ghost
   ports:
-      # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
-    - targetPort: 8000 # port that containers are listening on
-      port: 8000 # port exposed internally in the cluster
-      # Optional field
-      # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
-      nodePort: 30007 # a static port assigned on each the node
+    - protocol: TCP
+      targetPort: 2368 # port that containers are listening on
+      port: 80 # port exposed internally in the cluster
+    #  nodePort: 30007 # a static port assigned on each the node

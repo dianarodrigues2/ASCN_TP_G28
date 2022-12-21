@@ -1,13 +1,14 @@
 ---
 # Persistent Volume Claim for MySQL pod
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mysql-pv-claim
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: standard
-  resources:
-    requests:
-      storage: 20Gi
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#  name: mysql-pv-claim
+#  namespace: ascn-cluster
+#spec:
+#  accessModes:
+#    - ReadWriteOnce
+#  storageClassName: standard
+#  resources:
+#    requests:
+#      storage: 20Gi

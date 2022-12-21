@@ -1,9 +1,10 @@
 ---
 # Deployment for MySQL
-apiVersion: apps/v1
+apiVersion: v1
 kind: Deployment
 metadata:
-  name: mysql_deployment
+  name: mysql-deployment
+  namespace: ascn-cluster
   labels:
     app: mysql
     tier: database
@@ -33,10 +34,10 @@ spec:
           value: "Gh0$t" # Use Secret object in real usage
         ports:
         - containerPort: 3306
-        volumeMounts:
-        - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql
-      volumes:
-      - name: mysql-persistent-storage
-        persistentVolumeClaim:
-          claimName: mysql-pv-claim
+      #  volumeMounts:
+      #  - name: mysql-persistent-storage
+      #    mountPath: /var/lib/mysql
+      #volumes:
+      #- name: mysql-persistent-storage
+      #  persistentVolumeClaim:
+      #    claimName: mysql-pv-claim

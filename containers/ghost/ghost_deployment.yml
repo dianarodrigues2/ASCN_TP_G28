@@ -1,9 +1,10 @@
 ---
 # Deployment for deploying Ghost
-apiVersion: apps/v1
+apiVersion: v1
 kind: Deployment
 metadata:
-  name: ghost
+  name: ghost-deployment
+  namespace: ascn-cluster
   labels:
     app: ghost
 spec:
@@ -19,16 +20,15 @@ spec:
       containers:
       - name: ghost
         image: ghost:5.14.1
-        env:
-        - name: DB_HOST
-          value: mysql_service
-        - name: DB_DATABASE
+        env: # The variables below could be set on a ConfigMap object
+        - name: database__connection__database 
           value: ghost
-        - name: DB_USERNAME
+        - name: database__connection__user
           value: ghostuser
-        - name: DB_PASSWORD
-          value: "Gh0$t" # Use secret object in real usage
-        - name: MIGRATE
-          value: "true"
+        - name: database__connection__password
+          value: "Gh0$t"
+        - name: database__connection__host
+          value: mysql-service 
+          url: http://localhost:3306
         ports:
-        - containerPort: 8000
+        - containerPort: 2368

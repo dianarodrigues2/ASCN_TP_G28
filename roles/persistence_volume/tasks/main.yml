@@ -1,0 +1,15 @@
+---
+
+- name: Create k8s namespace
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1 
+      kind: Namespace
+      metadata:
+        name: ascn-cluster
+
+- name: Persistence volume configuration 
+  kubernetes.core.k8s:
+    state: present
+    src: containers/persistence_volume.yml

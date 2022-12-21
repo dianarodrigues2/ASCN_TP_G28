@@ -1,15 +1,24 @@
----
-- name: Create deployment MySQL
+
+- name: Create k8s namespace
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1 
+      kind: namespace
+      metadata:
+        name: ascn-cluster
+
+- name: Mysql deployment 
   kubernetes.core.k8s:
     state: present
     src: containers/mysql/mysql_deployment.yml
 
-- name: PVC MySQL
-  kubernetes.core.k8s:
-    state: present
-    src: containers/mysql/mysql_pvc.yml
+#- name: Mysql pvc
+#  kubernetes.core.k8s:
+#    state: present
+#    src: containers/mysql/mysql_pvc.yml
 
-- name: Service MySQL
+- name: Mysql service
   kubernetes.core.k8s:
     state: present
     src: containers/mysql/mysql_service.yml

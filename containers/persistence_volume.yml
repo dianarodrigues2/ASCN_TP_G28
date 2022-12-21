@@ -1,56 +1,56 @@
-#---
-#apiVersion: storage.k8s.io/v1
-#kind: StorageClass
-#metadata:
-#  name: local-storage
-#provisioner: kubernetes.io/no-provisioner
-#volumeBindingMode: WaitForFirstConsumer
-#---
-#apiVersion: v1
-#kind: PersistentVolume
-#metadata:
-#  name: pv001
-#  labels:
-#    type: local
-#spec:
-#  capacity:
-#    storage: 50Gi
-#  accessModes:
-#    - ReadWriteOnce
-#  persistentVolumeReclaimPolicy: Retain
-#  storageClassName: local-storage
-#  local:
-#    path: /mnt/data
-#  nodeAffinity:
-#    required:
-#      nodeSelectorTerms:
-#      - matchExpressions:
-#        - key: kubernetes.io/hostname
-#          operator: In
-#          values:
-#          - worker1
-#---
-#apiVersion: v1
-#kind: PersistentVolume
-#metadata:
-#  name: pv002
-#  labels:
-#    type: local
-#spec:
-#  capacity:
-#    storage: 50Gi
-#  accessModes:
-#    - ReadWriteOnce
-#  persistentVolumeReclaimPolicy: Retain
-#  storageClassName: local-storage
-#  local:
-#    path: /mnt/data
-#  nodeAffinity:
-#    required:
-#      nodeSelectorTerms:
-#      - matchExpressions:
-#        - key: kubernetes.io/hostname
-#          operator: In
-#          values:
-#          - worker2
-#
+#z---
+#zapiVersion: storage.k8s.io/v1
+#zkind: StorageClass
+#zmetadata:
+#z  name: local-storage
+#zprovisioner: kubernetes.io/no-provisioner
+#zvolumeBindingMode: WaitForFirstConsumer
+#z---
+#zapiVersion: v1
+#zkind: PersistentVolume
+#zmetadata:
+#z  name: pv001
+#z  labels:
+#z    type: local
+#zspec:
+#z  capacity:
+#z    storage: 50Gi
+#z  accessModes:
+#z    - ReadWriteOnce
+#z  persistentVolumeReclaimPolicy: Retain
+#z  storageClassName: local-storage
+#z  local:
+#z    path: /mnt/data
+#z  nodeAffinity:
+#z    required:
+#z      nodeSelectorTerms:
+#z      - matchExpressions:
+#z        - key: kubernetes.io/hostname
+#z          operator: In
+#z          values:
+#z          - worker1
+#z---
+#zapiVersion: v1
+#zkind: PersistentVolume
+#zmetadata:
+#z  name: pv002
+#z  labels:
+#z    type: local
+#zspec:
+#z  capacity:
+#z    storage: 50Gi
+#z  accessModes:
+#z    - ReadWriteOnce
+#z  persistentVolumeReclaimPolicy: Retain
+#z  storageClassName: local-storage
+#z  local:
+#z    path: /mnt/data
+#z  nodeAffinity:
+#z    required:
+#z      nodeSelectorTerms:
+#z      - matchExpressions:
+#z        - key: kubernetes.io/hostname
+#z          operator: In
+#z          values:
+#z          - worker2
+#z
