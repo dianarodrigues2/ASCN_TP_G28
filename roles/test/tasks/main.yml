@@ -1,0 +1,31 @@
+#- name: kubectl get nodes
+#  shell: kubectl get nodes
+#  register: kubectl_get_nodes
+#
+#- name: print kubectl_get_nodes
+#  debug:
+#    msg: "{{ kubectl_get_nodes.stdout_lines }}"
+
+- name: kubectl get all
+  shell: kubectl get all
+  register: kubectl_get_all
+
+- name: print kubectl_get_all
+  debug:
+    msg: "{{ kubectl_get_all.stdout_lines }}"
+
+- name: kubectl get deployment
+  shell: kubectl get deployment
+  register: kubectl_get_deployment
+
+- name: print kubectl_get_deployment
+  debug:
+    msg: "{{ kubectl_get_deployment.stdout_lines }}"
+
+- name: kubectl get pod
+  shell: kubectl get pod 
+  register: kubectl_get_pod
+
+- name: print kubectl_get_pod
+  debug:
+    msg: "{{ kubectl_get_pod.stdout_lines }}"

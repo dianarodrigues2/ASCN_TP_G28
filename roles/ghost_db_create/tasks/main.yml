@@ -8,17 +8,33 @@
       metadata:
         name: ascn-cluster
 
-- name: Mysql deployment 
-  kubernetes.core.k8s:
-    state: present
-    src: containers/mysql/mysql_deployment.yml
+- name: mysql deployment
+  shell: kubectl apply -f containers/mysql/mysql_deployment.yml
+  register: mysql_deployment
 
+- name: print mysql_deployment
+  debug:
+    msg: "{{ mysql_deployment.stdout_lines }}"
+
+- name: mysql service
+  shell: kubectl apply -f containers/mysql/mysql_service.yml
+  register: mysql_service 
+
+- name: print mysql_service
+  debug:
+    msg: "{{ mysql_service.stdout_lines }}" 
+
+#- name: Mysql deployment 
+#  kubernetes.core.k8s:
+#    state: present
+#    src: containers/mysql/mysql_deployment.yml
+#
 #- name: Mysql pvc
 #  kubernetes.core.k8s:
 #    state: present
 #    src: containers/mysql/mysql_pvc.yml
-
-- name: Mysql service
-  kubernetes.core.k8s:
-    state: present
-    src: containers/mysql/mysql_service.yml
+#
+#- name: Mysql service
+#  kubernetes.core.k8s:
+#    state: present
+#    src: containers/mysql/mysql_service.yml

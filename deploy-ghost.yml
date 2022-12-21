@@ -1,14 +1,6 @@
 ---
 # Playbook to deploy Ghost and its components
 
-#- name: Persistence volume configuration
-#  hosts: localhost
-#  gather_facts: false
-#  environment:
-#    GOOGLE_CREDENTIALS: "{{ gcp_cred_file }}"
-#  roles:
-#      - persistence_volume
-
 - name: Deploy Ghost
   hosts: localhost
   gather_facts: false
