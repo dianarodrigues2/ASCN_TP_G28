@@ -11,6 +11,10 @@
   shell: kubectl get pods -l app=mysql -o jsonpath='{.items[0].metadata.name}'
   register: mysql_pod_name
 
+- name: print mysql_pod_name
+  debug:
+    msg: "{{ mysql_pod_name.stdout_lines }}"
+
 - name: Verify access to mysql database
   shell: kubectl exec {{ mysql_pod_name.stdout_lines[0] }} -- mysqladmin --host=0.0.0.0 -u ghostuser -pGh0$t status
   register: mysql_status

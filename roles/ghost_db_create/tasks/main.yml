@@ -13,10 +13,10 @@
     state: present
     src: containers/mysql/mysql_deployment.yml
 
-#- name: Mysql pvc
-#  kubernetes.core.k8s:
-#    state: present
-#    src: containers/mysql/mysql_pvc.yml
+- name: Mysql pvc
+  kubernetes.core.k8s:
+    state: present
+    src: containers/mysql/mysql_pvc.yml
 
 - name: Mysql service
   kubernetes.core.k8s:
