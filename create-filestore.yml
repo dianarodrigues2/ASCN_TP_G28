@@ -1,0 +1,8 @@
+---
+# Playbook to create a Filestore instance
+
+- name: Create a Filestore instance
+  hosts: localhost
+  gather_facts: false
+  roles:
+      - gcp_filestore_create

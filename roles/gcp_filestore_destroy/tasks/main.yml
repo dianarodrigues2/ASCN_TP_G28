@@ -1,0 +1,16 @@
+- name: Destroy Filestore instance
+  google.cloud.gcp_filestore_instance:
+    name: fs001
+    zone: "{{ gcp_zone }}"
+    tier: STANDARD
+    file_shares:
+    - capacity_gb: 1024
+      name: fs001
+    networks:
+    - network: default
+      modes:
+      - MODE_IPV4
+    project: "{{ gcp_project }}"
+    auth_kind: "{{ gcp_auth_kind }}"
+    service_account_file: "{{ gcp_cred_file }}"
+    state: absent
