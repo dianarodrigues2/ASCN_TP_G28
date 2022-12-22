@@ -1,0 +1,7 @@
+---
+- name: Change Namespace config
+  hosts: localhost
+  gather_facts: false
+  roles:
+      - init
+

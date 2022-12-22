@@ -1,0 +1,3 @@
+---
+- name: Change Namespace config
+  shell: kubectl config set-context --current --namespace={{ namespace }}

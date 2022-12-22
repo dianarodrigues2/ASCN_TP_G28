@@ -4,7 +4,7 @@
 #kind: PersistentVolumeClaim
 #metadata:
 #  name: mysql-pv-claim
-#  namespace: ascn-cluster
+#  namespace: {{ namespace}}
 #spec:
 #  accessModes:
 #    - ReadWriteOnce

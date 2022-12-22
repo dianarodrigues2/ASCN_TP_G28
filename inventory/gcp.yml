@@ -20,4 +20,4 @@ all:
 
 
   # Additional variables
-  # ...
+  namespace: ascn-cluster

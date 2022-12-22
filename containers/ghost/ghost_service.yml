@@ -4,7 +4,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ghost-service
-  namespace: ascn-cluster
+  namespace: {{ namespace}}
   labels:
     app: ghost
 spec:
