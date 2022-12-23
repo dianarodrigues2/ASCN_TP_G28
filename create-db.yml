@@ -1,13 +1,11 @@
 ---
-# Playbook to deploy Ghost
+# Playbook to create database in Filestore
 
-- name: Deploy Ghost
+- name: Create Database in Filestore
   hosts: localhost
   gather_facts: false
   environment:
     GOOGLE_CREDENTIALS: "{{ gcp_cred_file }}"
   roles:
-      - ghost_app_deploy
+      - ghost_db_create
       
-
-

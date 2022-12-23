@@ -1,5 +1,4 @@
 ---
-
 - name: Create Google Kubernetes Engine Cluster
   gcp_container_cluster:
     name: ascn-cluster

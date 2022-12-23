@@ -7,7 +7,7 @@
       metadata:
         name: ascn-cluster
 
-- name: Ghost deployment
+- name: Ghost deploymxent
   kubernetes.core.k8s:
     state: present
     src: containers/ghost/ghost_deployment.yml

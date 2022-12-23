@@ -1,0 +1,8 @@
+---
+# Playbook to destroy Filestore instance
+
+- name: Destroy Filestore instance
+  hosts: localhost
+  gather_facts: false
+  roles:
+  - gcp_filestore_destroy
