@@ -7,8 +7,8 @@ metadata:
   namespace: ascn-cluster
 spec:
   accessModes:
-    - ReadWriteOnce
-  storageClassName: standard
+    - ReadWriteMany
+  storageClassName: standard-rwx
   resources:
     requests:
-      storage: 20Gi
+      storage: 1Ti
