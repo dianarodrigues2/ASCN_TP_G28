@@ -1,3 +1,4 @@
 ---
 # Playbook to undeploy Ghost and its component
-# TO DO
+
+- name: Undeploy Ghost
