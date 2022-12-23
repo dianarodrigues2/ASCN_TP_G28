@@ -1,3 +1,6 @@
 ---
 - name: Change Namespace config
-  shell: kubectl config set-context --current --namespace={{ namespace }}
+  shell: kubectl config set-context --current --namespace="{{ namespace }}"
+
+- name: Add Filestore CSI Driver
+  shell: gcloud container clusters update ascn-cluster --zone="{{ gcp_zone }}" --update-addons=GcpFilestoreCsiDriver=ENABLED

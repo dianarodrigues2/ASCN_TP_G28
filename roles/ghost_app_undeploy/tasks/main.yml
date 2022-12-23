@@ -1,0 +1,10 @@
+---
+- name: Undeploy Ghost
+  kubernetes.core.k8s:
+    state: absent
+    src: containers/ghost/ghost_deployment.yml
+
+- name: Undeploy Ghost service 
+  kubernetes.core.k8s:
+    state: absent
+    src: containers/ghost/ghost_service.yml

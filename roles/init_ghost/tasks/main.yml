@@ -1,0 +1,28 @@
+---
+- name: Get MySQL Pod Name
+  shell: kubectl get pods -l app=mysql -o jsonpath='{.items[0].metadata.name}'
+  register: mysql_pod_name
+
+- name: Create Ghost Admin
+  shell: kubectl exec -it {{ mysql_pod_name.stdout_lines[0] }} -- mysql -u ghostuser -p'Gh0$t' -e "USE ghost; update users set name='ascn', password='\$2b\$10\$p.omuFaYklAoyjMzfvmKT.rbL64WVej1aIub.em0rSG20LbRE2S1y', email='ascn@example.com', status='active' where id=1;"
+
+- name: Get external ip
+  shell: kubectl get services -l app=ghost -o jsonpath='{.items[0].status.loadBalancer.ingress[0].ip}'
+  register: external_ip
+
+- name: Set ghost_ip
+  set_fact:
+    ghost_ip: "{{ external_ip.stdout_lines[0] }}"
+
+- name: Get external port
+  shell: kubectl get services -l app=ghost -o jsonpath='{.items[0].spec.ports[0].port}'
+  register: external_port
+
+- name: Set ghost_port
+  set_fact:
+    ghost_port: "{{ external_port.stdout_lines[0] }}"
+
+- name: Update gcp.yml
+  template:
+    src: gcp_template
+    dest: inventory/gcp.yml

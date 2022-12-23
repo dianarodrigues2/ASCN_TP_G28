@@ -1,0 +1,16 @@
+---
+- name: Undeploy Mysql
+  kubernetes.core.k8s:
+    state: absent
+    src: containers/mysql/mysql_deployment.yml
+
+- name: Undeploy Mysql pvc
+  when: "{{ delete_data}}"
+  kubernetes.core.k8s:
+    state: absent
+    src: containers/mysql/mysql_pvc.yml
+
+- name: Undeploy Mysql service
+  kubernetes.core.k8s:
+    state: absent
+    src: containers/mysql/mysql_service.yml

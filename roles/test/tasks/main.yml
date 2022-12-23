@@ -11,3 +11,18 @@
   shell: kubectl exec -it {{ mysql_pod_name.stdout_lines[0] }} -- mysql -u ghostuser -p'Gh0$t' -e "SHOW DATABASES"
   register: mysql_pod
 
+- name: print mysql pod
+  debug:
+    msg: "{{ mysql_pod.stdout_lines }}"
+
+- name: aceder ao pod do mysql
+  shell: kubectl exec -it {{ mysql_pod_name.stdout_lines[0] }} -- mysql -u ghostuser -p'Gh0$t' -e "USE ghost; select * from users;"
+  register: users
+
+- name: print users
+  debug:
+    msg: "{{ users.stdout_lines }}"
+
+
+ 
+
