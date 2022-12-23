@@ -15,5 +15,5 @@ all:
 
 
   # APP variables
-  ghost_ip: {{ ghost_ip }}     # Needs to be updated
+  ghost_ip: "{{ ghost_ip }}"     # Needs to be updated
   ghost_port: 80         # Needs to be updated

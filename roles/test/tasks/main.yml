@@ -3,22 +3,11 @@
   shell: kubectl get all
   register: kubectl_get_all
 
-- name: print kubectl_get_all
-  debug:
-    msg: "{{ kubectl_get_all.stdout_lines }}"
-
-- name: Get mysql pod name
+- name: get mysql pod name
   shell: kubectl get pods -l app=mysql -o jsonpath='{.items[0].metadata.name}'
   register: mysql_pod_name
 
-- name: print mysql_pod_name
-  debug:
-    msg: "{{ mysql_pod_name.stdout_lines }}"
+- name: aceder ao pod do mysql
+  shell: kubectl exec -it {{ mysql_pod_name.stdout_lines[0] }} -- mysql -u ghostuser -p'Gh0$t' -e "SHOW DATABASES"
+  register: mysql_pod
 
-- name: Verify access to mysql database
-  shell: kubectl exec {{ mysql_pod_name.stdout_lines[0] }} -- mysqladmin --host=0.0.0.0 -u ghostuser -pGh0$t status
-  register: mysql_status
-
-- name: print mysql_status
-  debug:
-    msg: "{{ mysql_status.stdout_lines }}"
