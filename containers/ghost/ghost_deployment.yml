@@ -33,5 +33,9 @@ spec:
           value: ghost
         - name: url
           value: http://ghost.org
+        - name: POSTFIX_SERVICE_HOST
+          value: postfix
+        - name: POSTFIX_SERVICE_PORT
+          value: "25"
         ports:
         - containerPort: 2368

@@ -7,5 +7,6 @@
   environment:
     GOOGLE_CREDENTIALS: "{{ gcp_cred_file }}"
   roles:
+      - init
       - ghost_db_create
       

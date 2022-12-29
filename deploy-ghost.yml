@@ -1,17 +1,25 @@
 ---
 # Playbook to deploy Ghost
 
+#- name: Deploy Ghost
+#  hosts: localhost
+#  gather_facts: false
+#  environment:
+#    GOOGLE_CREDENTIALS: "{{ gcp_cred_file }}"
+#  roles:
+#      - init 
+#      - ghost_db_create
+#      - ghost_app_deploy
+#      - init_ghost
+      
+      
 - name: Deploy Ghost
   hosts: localhost
   gather_facts: false
   environment:
     GOOGLE_CREDENTIALS: "{{ gcp_cred_file }}"
   roles:
-      - init 
-      - ghost_db_create
       - ghost_app_deploy
       - init_ghost
-      
-      
 
 
