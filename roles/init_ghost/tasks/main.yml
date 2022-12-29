@@ -1,4 +1,22 @@
 ---
+- name: Get Mysql Pod Status
+  shell: kubectl get pods -l app=mysql -o jsonpath='{.items[0].status.phase}'
+  register: mysql_pod_status
+  until: mysql_pod_status.stdout_lines[0] == "Running"
+  delay: 60
+  retries: 5
+
+- name: Get Ghost Pod Ready status
+  shell: kubectl get pods -l app=ghost -o jsonpath='{.items[0].status.containerStatuses[0].ready}'
+  register: ghost_pod_status
+  until: ghost_pod_status.stdout_lines[0] == "true"
+  delay: 60
+  retries: 5
+
+- name: Print ghost_pod_status
+  debug:
+    msg: "{{ ghost_pod_status.stdout_lines[0] }}"
+
 - name: Get MySQL Pod Name
   shell: kubectl get pods -l app=mysql -o jsonpath='{.items[0].metadata.name}'
   register: mysql_pod_name
@@ -9,6 +27,9 @@
 - name: Get external ip
   shell: kubectl get services -l app=ghost -o jsonpath='{.items[0].status.loadBalancer.ingress[0].ip}'
   register: external_ip
+  until: external_ip.stdout_lines[0] != ""
+  delay: 60
+  retries: 5
 
 - name: Set ghost_ip
   set_fact:
@@ -17,6 +38,9 @@
 - name: Get external port
   shell: kubectl get services -l app=ghost -o jsonpath='{.items[0].spec.ports[0].port}'
   register: external_port
+  until: external_port.stdout_lines[0] != ""
+  delay: 60
+  retries: 5
 
 - name: Set ghost_port
   set_fact:
