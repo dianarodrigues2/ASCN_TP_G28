@@ -39,3 +39,7 @@ spec:
           value: "25"
         ports:
         - containerPort: 2368
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "200Mi"

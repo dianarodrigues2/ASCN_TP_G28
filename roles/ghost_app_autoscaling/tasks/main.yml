@@ -1,0 +1,4 @@
+- name: Create autoscale
+  kubernetes.core.k8s:
+    state: present
+    src: containers/ghost/ghost_autoscale.yml
