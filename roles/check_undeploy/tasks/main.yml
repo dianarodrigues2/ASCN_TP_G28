@@ -1,0 +1,53 @@
+---
+
+- name: Check if ghost-deployment is undeployed
+  shell: kubectl get deployment ghost-deployment
+  register: ghost_deployment
+  ignore_errors: yes
+  until: ghost_deployment.rc == 1
+  retries: 10
+  delay: 10
+
+- name: Check if ghost-service is undeployed
+  shell: kubectl get service ghost-service
+  register: ghost_service
+  ignore_errors: yes
+  until: ghost_service.rc == 1
+  retries: 10
+  delay: 10
+
+- name: Check if mysql-deployment is undeployed
+  shell: kubectl get deployment mysql-deployment
+  register: mysql_deployment
+  ignore_errors: yes
+  until: mysql_deployment.rc == 1
+  retries: 10
+  delay: 10
+
+- name: Check if mysql-service is undeployed
+  shell: kubectl get service mysql-service
+  register: mysql_service
+  ignore_errors: yes
+  until: mysql_service.rc == 1
+  retries: 10
+  delay: 10
+
+- name: Check if mysql-pv-claim is undeployed
+  when: "{{ delete_data}}"
+  shell: kubectl get pvc mysql-pv-claim
+  register: mysql_pv_claim
+  ignore_errors: yes
+  until: mysql_pv_claim.rc == 1
+  retries: 10
+  delay: 10
+
+- name: Check if filestore is deleted
+  when: "{{ delete_data}}"
+  shell: gcloud filestore instances describe {{ filestore_name }} --zone {{ gcp_zone }}
+  register: filestore
+  ignore_errors: yes
+  until: filestore.rc == 1
+  retries: 10
+  delay: 10
+
+

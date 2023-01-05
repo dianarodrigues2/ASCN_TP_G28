@@ -4,14 +4,14 @@
   register: mysql_pod_status
   until: mysql_pod_status.stdout_lines[0] == "Running"
   delay: 60
-  retries: 5
+  retries: 15
 
 - name: Get Ghost Pod Ready status
   shell: kubectl get pods -l app=ghost -o jsonpath='{.items[0].status.containerStatuses[0].ready}'
   register: ghost_pod_status
   until: ghost_pod_status.stdout_lines[0] == "true"
   delay: 60
-  retries: 5
+  retries: 7
 
 - name: Print ghost_pod_status
   debug:
@@ -40,11 +40,22 @@
   register: external_port
   until: external_port.stdout_lines.0 is defined
   delay: 60
-  retries: 5
+  retries: 7
 
 - name: Set ghost_port
   set_fact:
     ghost_port: "{{ external_port.stdout_lines[0] }}"
+
+- name: Get filestore name
+  shell: kubectl get pvc mysql-pv-claim -o jsonpath='{.spec.volumeName}'
+  register: filestore_name
+  until: filestore_name.stdout_lines.0 is defined
+  delay: 60
+  retries: 7
+
+- name: Set filestore_name
+  set_fact:
+    filestore_name: "{{ filestore_name.stdout_lines[0] }}"
 
 - name: Update gcp.yml
   template:

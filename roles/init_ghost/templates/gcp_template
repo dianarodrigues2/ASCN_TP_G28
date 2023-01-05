@@ -20,3 +20,4 @@ all:
 
   namespace: ascn-cluster
   delete_data: false
+  filestore_name: "{{ filestore_name }}"

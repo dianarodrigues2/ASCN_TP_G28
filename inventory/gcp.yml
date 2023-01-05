@@ -15,8 +15,9 @@ all:
 
 
   # APP variables
-  ghost_ip: "34.69.42.155"     # Needs to be updated
+  ghost_ip: "34.66.87.85"     # Needs to be updated
   ghost_port: "80"        # Needs to be updated
 
   namespace: ascn-cluster
   delete_data: false
+  filestore_name: "pvc-d0c2382f-8942-4510-b887-b13d868eb9c1"
