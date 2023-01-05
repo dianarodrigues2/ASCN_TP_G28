@@ -14,3 +14,14 @@
   kubernetes.core.k8s:
     state: absent
     src: containers/mysql/mysql_service.yml
+
+- name: Wait for service undeployment
+  kubernetes.core.k8s_info:
+    api_version: v1
+    kind: Service
+    name: mysql
+    namespace: ascn-cluster
+  register: mysql_service
+  until: mysql_service.resources | length == 0
+  retries: 5
+  delay: 60

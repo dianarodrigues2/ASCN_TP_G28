@@ -8,6 +8,11 @@
       metadata:
         name: ascn-cluster
 
+- name: Mysql service
+  kubernetes.core.k8s:
+    state: present
+    src: containers/mysql/mysql_service.yml
+
 - name: Mysql deployment 
   kubernetes.core.k8s:
     state: present
@@ -17,8 +22,3 @@
   kubernetes.core.k8s:
     state: present
     src: containers/mysql/mysql_pvc.yml
-
-- name: Mysql service
-  kubernetes.core.k8s:
-    state: present
-    src: containers/mysql/mysql_service.yml

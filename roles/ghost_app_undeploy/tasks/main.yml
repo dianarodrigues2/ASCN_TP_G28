@@ -8,3 +8,14 @@
   kubernetes.core.k8s:
     state: absent
     src: containers/ghost/ghost_service.yml
+
+- name: Wait for service undeployment
+  kubernetes.core.k8s_info:
+    api_version: v1
+    kind: Service
+    name: ghost
+    namespace: ascn-cluster
+  register: ghost_service
+  until: ghost_service.resources | length == 0
+  retries: 5
+  delay: 60
