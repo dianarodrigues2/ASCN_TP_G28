@@ -1,0 +1,5 @@
+- name: Undeploy Ghost autoscale
+  hosts: localhost
+  gather_facts: no
+  roles:
+    - ghost_app_undeploy_autoscale
