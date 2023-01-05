@@ -7,3 +7,4 @@
   roles:
     - ghost_db_undeploy
     - ghost_app_undeploy
+    - ghost_app_undeploy_autoscale
