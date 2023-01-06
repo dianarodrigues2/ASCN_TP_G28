@@ -31,12 +31,19 @@ spec:
           value: "Gh0$t"
         - name: database__connection__database
           value: ghost
+        - name: mail__transport
+          value: "SMTP"
+        - name: mail__options__service
+          value: "Mailgun"
+        - name: mail__options__host
+          value: "smtp.eu.mailgun.org"
+        - name: mail__options__auth__user
+          value: "postmaster@jpdiasfernandes.online"
+        - name: mail__options__auth__pass
+          value: "235ac73f134000ef620db6317f2ebd2e-cc9b2d04-d7aac85e"
         - name: url
           value: http://ghost.org
-        - name: POSTFIX_SERVICE_HOST
-          value: postfix
-        - name: POSTFIX_SERVICE_PORT
-          value: "25"
+
         ports:
         - containerPort: 2368
         resources:
