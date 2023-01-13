@@ -24,5 +24,4 @@
       - ghost_app_deploy
       - ghost_app_autoscaling
       - init_ghost
-
-
+      - monitoring

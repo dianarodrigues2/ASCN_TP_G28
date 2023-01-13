@@ -1,0 +1,52 @@
+---
+# Deployment for deploying Ghost
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: ghost-deployment
+  namespace: ascn-cluster
+  labels:
+    app: ghost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost
+  template:
+    metadata:
+      labels:
+        app: ghost
+    spec:
+      containers:
+      - name: ghost
+        image: ghost:5.14.1
+        env:
+        - name: database__client
+          value: mysql
+        - name: database__connection__host
+          value: mysql-service
+        - name: database__connection__user
+          value: ghostuser
+        - name: database__connection__password
+          value: "Gh0$t"
+        - name: database__connection__database
+          value: ghost
+        - name: mail__transport
+          value: "SMTP"
+        - name: mail__options__service
+          value: "Mailgun"
+        - name: mail__options__host
+          value: "smtp.eu.mailgun.org"
+        - name: mail__options__auth__user
+          value: "postmaster@jpdiasfernandes.online"
+        - name: mail__options__auth__pass
+          value: "235ac73f134000ef620db6317f2ebd2e-cc9b2d04-d7aac85e"
+        - name: url
+          value: http://{{ghost_ip}}
+
+        ports:
+        - containerPort: 2368
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "200Mi"
