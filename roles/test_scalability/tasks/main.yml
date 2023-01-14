@@ -1,0 +1,57 @@
+---
+- name: Get all pod names
+  shell: kubectl get pods -o jsonpath='{.items[*].metadata.name}'
+  register: pod_name
+  changed_when: false
+
+- name: Transform pod_name to list
+  set_fact:
+    pod_name: "{{ pod_name.stdout_lines[0].split(' ') }}"
+
+- name: Print all pod names
+  debug:
+    var: pod_name
+
+- name: Get Nodes before stress testing
+  shell: kubectl get nodes -o jsonpath='{.items[*].metadata.name}'
+  register: nodes
+  changed_when: false
+
+- name: Transform nodes to list
+  set_fact:
+    nodes: "{{ nodes.stdout_lines[0].split(' ') }}"
+
+- name: Print nodes before stress testing
+  debug:
+    var: nodes
+
+#- name: Stress testing with JMeter
+#  shell: jmeter 
+#  register: jmeter
+#  changed_when: false
+
+- name: Get Pods after stress testing
+  shell: kubectl get pods -o jsonpath='{.items[*].metadata.name}'
+  register: pods
+  changed_when: false
+
+- name: Transform pods to list
+  set_fact:
+    pods: "{{ pods.stdout_lines[0].split(' ') }}"
+
+- name: Print Pods after stress testing
+  debug:
+    var: pods.stdout_lines
+
+- name: Get Nodes after stress testing
+  shell: kubectl get nodes -o jsonpath='{.items[*].metadata.name}'
+  register: nodes
+  changed_when: false
+
+- name: Transform nodes to list
+  set_fact:
+    nodes: "{{ nodes.stdout_lines[0].split(' ') }}"
+
+- name: Print nodes after stress testing
+  debug:
+    var: nodes

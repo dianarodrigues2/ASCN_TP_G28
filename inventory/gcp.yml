@@ -16,12 +16,12 @@ all:
 
 
   # APP variables
-  ghost_ip: "34.133.120.165"     # Needs to be updated
+  ghost_ip: "34.171.247.113"     # Needs to be updated
   ghost_port: "80"        # Needs to be updated
 
   namespace: ascn-cluster
   delete_data: false
-  filestore_name: "pvc-153c8b28-0a33-4663-94eb-9435d92ea9d6"
+  filestore_name: "pvc-193cee73-5a45-477a-a9cd-d20165ce0071"
   cpu_request: "300m"
   mem_request: "600Mi"
   cpu_utilization: "70"

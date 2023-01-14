@@ -1,0 +1,10 @@
+---
+# Playbook to test scalability of Ghost
+
+- name: Test scalability
+  hosts: localhost
+  gather_facts: false
+  environment:
+    GOOGLE_CREDENTIALS: "{{ gcp_cred_file }}"
+  roles:
+      - test_scalability
