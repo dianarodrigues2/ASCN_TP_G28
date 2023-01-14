@@ -42,11 +42,11 @@ spec:
         - name: mail__options__auth__pass
           value: "235ac73f134000ef620db6317f2ebd2e-cc9b2d04-d7aac85e"
         - name: url
-          value: http://ghost.org
+          value: http://35.238.132.34
 
         ports:
         - containerPort: 2368
         resources:
           requests:
-            cpu: "250m"
-            memory: "200Mi"
+            cpu: "500m"
+            memory: "600Mi"

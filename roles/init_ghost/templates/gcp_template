@@ -6,6 +6,7 @@ all:
   gcp_project: ascn-tp-g28              # ID of GCP Project
   gcp_auth_kind: serviceaccount            # Do not change
   gcp_cred_file: "/media/mariana/DATA/MIEi/4_ano/ASCN/Projeto/ascn-tp-g28-0f8085ff978d.json"    # Path to service account keys (json file downloaded from GCP)
+  gcp_dashboard_config: "monitoring/dashboards/dashboard_config.json"
 
   gcp_zone: us-central1-a
   gcp_image_type: ubuntu_containerd
@@ -21,3 +22,9 @@ all:
   namespace: ascn-cluster
   delete_data: false
   filestore_name: "{{ filestore_name }}"
+  cpu_request: "{{cpu_request}}"
+  mem_request: "{{mem_request}}"
+  cpu_utilization: "{{cpu_utilization}}"
+  mem_utilization: "{{mem_utilization}}"
+  min_replicas: "{{min_replicas}}"
+  max_replicas: "{{max_replicas}}"

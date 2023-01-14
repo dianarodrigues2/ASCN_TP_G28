@@ -23,26 +23,11 @@
   set_fact:
     ghost_ip: "{{ external_ip.stdout_lines[0] }}"
 
-- name: Get external port
-  shell: kubectl get services -l app=ghost -o jsonpath='{.items[0].spec.ports[0].port}'
-  register: external_port
-  until: external_port.stdout_lines.0 is defined
-  delay: 60
-  retries: 7
-
-- name: Set ghost_port
-  set_fact:
-    ghost_port: "{{ external_port.stdout_lines[0] }}"
-
-
-
-
 
 - name: Updating container file with url
   ansible.builtin.template:
     src: ../templates/ghost_deployment.j2
     dest: containers/ghost/ghost_deployment.yml
-
 
 - name: Ghost deployment
   kubernetes.core.k8s:

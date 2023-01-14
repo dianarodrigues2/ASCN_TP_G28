@@ -1,3 +1,8 @@
+- name: update utilization values
+  template:
+    src: ../templates/ghost_autoscale.j2
+    dest: containers/ghost/ghost_autoscale.yml
+
 - name: Create autoscale
   kubernetes.core.k8s:
     state: present

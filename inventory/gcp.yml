@@ -5,7 +5,7 @@ all:
   # GKE cluster variables
   gcp_project: ascn-tp-g28              # ID of GCP Project
   gcp_auth_kind: serviceaccount            # Do not change
-  gcp_cred_file: "ascn-tp-g28.json"    # Path to service account keys (json file downloaded from GCP)
+  gcp_cred_file: "/media/mariana/DATA/MIEi/4_ano/ASCN/Projeto/ascn-tp-g28-0f8085ff978d.json"    # Path to service account keys (json file downloaded from GCP)
   gcp_dashboard_config: "monitoring/dashboards/dashboard_config.json"
 
   gcp_zone: us-central1-a
@@ -21,4 +21,10 @@ all:
 
   namespace: ascn-cluster
   delete_data: false
-  filestore_name: "pvc-9ce49bdc-7926-4815-8d93-8b901780aa9e"
+  filestore_name: "pvc-153c8b28-0a33-4663-94eb-9435d92ea9d6"
+  cpu_request: "300m"
+  mem_request: "600Mi"
+  cpu_utilization: "70"
+  mem_utilization: "70"
+  min_replicas: "1"
+  max_replicas: "5"

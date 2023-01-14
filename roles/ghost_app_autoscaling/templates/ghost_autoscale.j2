@@ -8,18 +8,18 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: ghost-deployment
-  minReplicas: 1
-  maxReplicas: 5
+  minReplicas: {{min_replicas}}
+  maxReplicas: {{max_replicas}}
   metrics:
   - type: Resource
     resource:
       name: cpu
       target:
         type: Utilization
-        averageUtilization: 70
+        averageUtilization: {{ cpu_utilization }}
   - type: Resource
     resource:
       name: memory
       target:
         type: Utilization
-        averageUtilization: 70
+        averageUtilization: {{ mem_utilization }}

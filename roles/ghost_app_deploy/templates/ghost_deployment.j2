@@ -48,5 +48,5 @@ spec:
         - containerPort: 2368
         resources:
           requests:
-            cpu: "250m"
-            memory: "200Mi"
+            cpu: "{{ cpu_request }}"
+            memory: "{{ mem_request }}"
