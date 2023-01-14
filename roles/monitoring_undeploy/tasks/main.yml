@@ -1,2 +1,2 @@
-- name: delete dashboard
+- name: Delete dashboard
   shell: gcloud monitoring dashboards delete "{{dashboard_name}}" --project="{{ gcp_project }}" --quiet

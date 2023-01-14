@@ -1,7 +1,7 @@
-- name: add dashboard_name
+- name: Add dashboard_name
   template:
     src: ../templates/dashboard_config.j2
     dest: monitoring/dashboards/dashboard_config.json
 
-- name: create dashboard
+- name: Create dashboard
   shell: gcloud monitoring dashboards create --project="{{ gcp_project }}" --config-from-file="{{ gcp_dashboard_config }}"

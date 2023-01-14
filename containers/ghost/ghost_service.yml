@@ -15,4 +15,3 @@ spec:
     - protocol: TCP
       targetPort: 2368 # port that containers are listening on
       port: 80 # port exposed internally in the cluster
-    #  nodePort: 30007 # a static port assigned on each the node

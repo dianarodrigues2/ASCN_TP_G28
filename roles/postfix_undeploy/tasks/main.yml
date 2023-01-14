@@ -1,9 +1,0 @@
-- name: Postfix undeployment
-  kubernetes.core.k8s:
-    state: absent
-    src: containers/postfix/postfix-deployment.yml
-
-- name: Postfix service undeployment
-  kubernetes.core.k8s:
-    state: absent
-    src: containers/postfix/postfix-service.yml

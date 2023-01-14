@@ -1,9 +1,0 @@
----
-
-- name: Deploy Postfix
-  hosts: localhost
-  gather_facts: false
-  environment:
-    GOOGLE_CREDENTIALS: "{{ gcp_cred_file }}"
-  roles:
-      - postfix_deploy

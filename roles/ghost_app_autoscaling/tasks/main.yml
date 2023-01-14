@@ -1,4 +1,4 @@
-- name: update utilization values
+- name: Update utilization values
   template:
     src: ../templates/ghost_autoscale.j2
     dest: containers/ghost/ghost_autoscale.yml

@@ -1,4 +1,4 @@
-- name: Create autoscale
+- name: Undeploy autoscale
   kubernetes.core.k8s:
     state: absent
     src: containers/ghost/ghost_autoscale.yml

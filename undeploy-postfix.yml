@@ -1,5 +1,0 @@
-- name: Undeploy Postfix
-  hosts: localhost
-  gather_facts: no
-  roles:
-    - postfix_undeploy

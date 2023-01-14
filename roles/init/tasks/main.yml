@@ -5,6 +5,6 @@
 - name: Add Filestore CSI Driver
   shell: gcloud container clusters update ascn-cluster --zone="{{ gcp_zone }}" --update-addons=GcpFilestoreCsiDriver=ENABLED
 
-- name: add cluster autoscaling
+- name: Add cluster autoscaling
   shell:
     gcloud container clusters update "{{namespace}}" --min-nodes="{{gcp_initial_node_count}}" --max-nodes="{{max_replicas}}" --enable-autoscaling
