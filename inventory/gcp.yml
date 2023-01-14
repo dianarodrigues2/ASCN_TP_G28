@@ -16,7 +16,7 @@ all:
 
 
   # APP variables
-  ghost_ip: "35.238.132.34"     # Needs to be updated
+  ghost_ip: "34.133.120.165"     # Needs to be updated
   ghost_port: "80"        # Needs to be updated
 
   namespace: ascn-cluster
@@ -28,3 +28,5 @@ all:
   mem_utilization: "70"
   min_replicas: "1"
   max_replicas: "5"
+
+  dashboard_name: "ghost-dashboard"

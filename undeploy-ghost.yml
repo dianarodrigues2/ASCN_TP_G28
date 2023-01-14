@@ -9,3 +9,4 @@
     - ghost_app_undeploy
     - ghost_app_undeploy_autoscale
     - check_undeploy
+    - monitoring_undeploy
