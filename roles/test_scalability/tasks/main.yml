@@ -1,4 +1,10 @@
 ---
+- name: update config with variables
+  template:
+    src: ../templates/jmeter_config.j2
+    dest: jmeter/jmeter_config.jmx
+
+
 - name: Get all pod names
   shell: kubectl get pods -o jsonpath='{.items[*].metadata.name}'
   register: pod_name
@@ -25,23 +31,28 @@
   debug:
     var: nodes
 
-#- name: Stress testing with JMeter
-#  shell: jmeter 
-#  register: jmeter
-#  changed_when: false
-
-- name: Get Pods after stress testing
-  shell: kubectl get pods -o jsonpath='{.items[*].metadata.name}'
-  register: pods
+- name: Stress testing with JMeter
+  shell: jmeter -n -t jmeter/jmeter_config.jmx -l jmeter/log.jtl
+  register: jmeter
   changed_when: false
 
-- name: Transform pods to list
+
+- name: Sleep
+  pause:
+    minutes: "{{sleep_time}}"
+
+- name: Get all pod names
+  shell: kubectl get pods -o jsonpath='{.items[*].metadata.name}'
+  register: pod_name_1
+  changed_when: false
+
+- name: Transform pod_name to list
   set_fact:
-    pods: "{{ pods.stdout_lines[0].split(' ') }}"
+    pod_name_1: "{{ pod_name_1.stdout_lines[0].split(' ') }}"
 
 - name: Print Pods after stress testing
   debug:
-    var: pods.stdout_lines
+    var: pod_name_1
 
 - name: Get Nodes after stress testing
   shell: kubectl get nodes -o jsonpath='{.items[*].metadata.name}'
