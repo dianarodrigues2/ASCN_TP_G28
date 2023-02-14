@@ -1,6 +1,8 @@
 # Aplicações e Serviços de Computação em Nuvem
 
-Resolução do trabalho prático.
+Resolução do trabalho prático. 
+
+**Nota Final:** 18
 
 **Grupo 28:**
 * Diana Rodrigues - dianarodrigues2
